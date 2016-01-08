@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= controller_name %>#<%= action_name %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<div id=footer>
+  <% if controller_name != "pages" or action_name != "index" %>
+  <%= link_to "Powróć do strony głównej", :action => :index, :controller => :pages %>
+  <% end %>
+</div>
+
+
+
+
+</body>
+</html>
