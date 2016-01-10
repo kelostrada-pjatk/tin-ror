@@ -1,2 +1,37 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>Posts</h1>
+
+<p>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Content</th>
+      <th>Author</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+    </tr>
+    <% if @posts.count == 0 %>
+      <tr>
+        <td colspan="5" style="text-align: center;"><b>No posts available</b></td>
+      </tr>
+    <% end %>
+    <% @posts.each do |p| %>
+      <tr>
+        <td>
+          <%= p.id %>
+        </td>
+        <td>
+          <%= p.content %>
+        </td>
+        <td>
+          <%= p.author %>
+        </td>
+        <td>
+          <%= p.created_at %>
+        </td>
+        <td>
+          <%= p.updated_at %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</p>
