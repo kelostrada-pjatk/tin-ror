@@ -1,0 +1,40 @@
+<h1>Users</h1>
+
+<p>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+    </tr>
+    <% if @users.count == 0 %>
+      <tr>
+        <td colspan="5" style="text-align: center;"><b>No users available</b></td>
+      </tr>
+    <% end %>
+    <% @users.each do |u| %>
+      <tr>
+        <td>
+          <%= u.id %>
+        </td>
+        <td>
+          <%= u.name %>
+        </td>
+        <td>
+          <%= u.email %>
+        </td>
+        <td>
+          <%= u.created_at %>
+        </td>
+        <td>
+          <%= u.updated_at %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+<p>
+  <%= link_to "Create new user", url_options = { :action => :new }, html_options = { :class => "btn btn-primary" } %>
+</p>

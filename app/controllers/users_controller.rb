@@ -1,20 +1,30 @@
 class UsersController < ApplicationController
   
-  def show
+  def index
     @users = User.all
   end
 
   def create
-    user = User.create :name => params[:user][:name], :email => params[:user][:email]
     
-    if !user.valid?
-      flash[:error] = user.errors.full_messages.join("<br>").html_safe
-      flash.keep
+    if User.where("name = ? OR email = ?", params[:user][:name], params[:user][:email]).size > 0
+      
+      flash[:error] = ["User already exists"]
+      
     else
-      flash[:success] = true
+      
+      user = User.create :name => params[:user][:name], :email => params[:user][:email]
+    
+      if !user.valid?
+        flash[:error] = user.errors.full_messages
+      else
+        flash[:success] = ["User created successfully"]
+      end
+
     end
     
-    redirect_to :action => :show
+    flash.keep
+    
+    redirect_to :action => :index
   end
 
   def new
