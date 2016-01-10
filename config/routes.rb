@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  get 'users/show'
-
+  #get 'users/show'
+  get "users/show" => 'users#show'
+    
   post 'users/create'
 
   get 'users/new'
@@ -21,8 +22,8 @@ Rails.application.routes.draw do
 
   get 'pages/index'
   
+  root :to => 'pages#index'
   
-
   get 'hello/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
